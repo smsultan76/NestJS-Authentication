@@ -21,7 +21,6 @@ export class AuthController {
   @UseGuards(JwtAuthGuard)
   @Get('profile')
   getProfile(@Request() req) {
-    // Remove password from response
     const { password, ...user } = req.user;
     return {
       message: 'Profile retrieved successfully',

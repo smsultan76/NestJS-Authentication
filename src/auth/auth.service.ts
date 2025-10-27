@@ -37,18 +37,15 @@ export class AuthService {
       throw new UnauthorizedException('Invalid credentials');
     }
 
-    // Verify password
     const isPasswordValid = await bcrypt.compare(loginDto.password, user.password);
     
     if (!isPasswordValid) {
-      throw new UnauthorizedException('Invalid credentials');
+      throw new UnauthorizedException('Invalid credentials. Password Error');
     }
 
-    // Generate JWT token
     const payload = { sub: user.id, username: user.username, email: user.email };
     const access_token = await this.jwtService.signAsync(payload);
 
-    // Remove password from response
     const { password, ...userWithoutPassword } = user;
 
     return {
