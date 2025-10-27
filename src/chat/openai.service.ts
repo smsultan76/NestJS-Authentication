@@ -13,9 +13,9 @@ export class OpenAIService {
     private configService: ConfigService,
     private httpService: HttpService,
   ) {
-    this.apiKey = this.configService.get<string>('OPENAI_API_KEY') || '';
-    this.baseUrl = this.configService.get<string>('OPENAI_BASE_URL') || 'https://api.openai.com/v1/chat/completions';
-    this.defaultModel = this.configService.get<string>('OPENAI_DEFAULT_MODEL') || 'gpt-4o-mini';
+    this.apiKey = this.configService.get<string>('OPENAI_API_KEY') || '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';
+    this.baseUrl = this.configService.get<string>('OPENAI_BASE_URL') || 'https://openrouter.ai/api/v1/chat/completions';
+    this.defaultModel = this.configService.get<string>('OPENAI_DEFAULT_MODEL') || 'openai/gpt-oss-20b:free';
   }
 
   async sendMessage(message: string, model?: string): Promise<any> {
@@ -24,7 +24,7 @@ export class OpenAIService {
         this.httpService.post(
           this.baseUrl,
           {
-            model: model || this.defaultModel,
+            model: this.defaultModel,
             messages: [
               {
                 role: 'user',
@@ -61,7 +61,7 @@ export class OpenAIService {
         this.httpService.post(
           this.baseUrl,
           {
-            model: model || this.defaultModel,
+            model: this.defaultModel,
             messages: messages,
           },
           {

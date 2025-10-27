@@ -9,6 +9,11 @@ import { CreateChatDto } from './dto/create-chat.dto';
 export class ChatController {
   constructor(private readonly chatService: ChatService) {}
 
+  @Post('test')
+  async testChat(@Body() newChatDto: NewChatDto){
+    return this.chatService.testChat(newChatDto);
+  }
+
   @Post('new')
   async newChat(@Request() req, @Body() newChatDto: NewChatDto) {
     return this.chatService.newChat(req.user.id, newChatDto);

@@ -16,6 +16,9 @@ export class ChatService {
     private messageRepository: Repository<ContentMessage>,
     private openAIService: OpenAIService,
   ) {}
+  async testChat(newChatDto: NewChatDto){
+    return await this.openAIService.sendMessage(newChatDto.content);
+  }
 
   async newChat(userId: string, newChatDto: NewChatDto) {
     let chat: ContentChat;
