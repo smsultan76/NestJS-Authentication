@@ -14,7 +14,7 @@ export class ContentChat {
   title: string;
 
   @Column({ nullable: true })
-  system_prompt: string;
+  system_prompt?: string;  // Changed to optional
 
   @Column({ default: 'gpt-4o-mini' })
   model: string;
