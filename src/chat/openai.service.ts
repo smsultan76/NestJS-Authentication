@@ -13,9 +13,9 @@ export class OpenAIService {
     private configService: ConfigService,
     private httpService: HttpService,
   ) {
-    this.baseUrl = this.configService.get<string>('OPENAI_BASE_URL') || 'https://openrouter.ai/api/v1/chat/completions';
-    this.defaultModel = this.configService.get<string>('OPENAI_DEFAULT_MODEL') || 'openai/gpt-oss-20b:free';
     this.apiKey = this.configService.get<string>('OPEN_API_KEY') || '';
+    this.baseUrl = this.configService.get<string>('OPEN_AI_BASE_URL') || 'https://openrouter.ai/api/v1/chat/completions';
+    this.defaultModel = this.configService.get<string>('OPEN_AI_DEFAULT_MODEL') || 'openai/gpt-oss-20b:free';
   }
 
   async sendMessage(message: string, model?: string): Promise<any> {
