@@ -22,8 +22,8 @@ export class StripeService {
         this.stripe = new Stripe(this.secret);
     }
 
-    paymentData() {
-        return this.paymentRepository.find();
+    paymentData(page,last) {
+        return this.paymentRepository.find({ skip: page, take: last ?? 10})
     }
 
     async paymentCreate(data) {
