@@ -15,4 +15,9 @@ export class StripeController {
     createPayment(@Body() data: CreatePaypentDto){
         return this.stripeService.paymentCreate(data);
     }
+
+    @Get('payment/success')
+    paymentSuccess(){
+        return " Wow greate work you successfully wasted your money.";
+    }
 }
