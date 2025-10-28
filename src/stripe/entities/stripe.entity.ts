@@ -24,7 +24,7 @@ export class StripePayment {
     status: string;
 
     @Column({ nullable:true })
-    stripe_payment_intent_id: string;
+    payment_intent_id: string;
 
     @Column({ type: 'jsonb', nullable:true })
     metadata: any;
