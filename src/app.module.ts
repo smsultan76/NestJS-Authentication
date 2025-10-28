@@ -7,6 +7,7 @@ import { UsersModule } from './users/users.module';
 import { HealthController } from './health/health.controller';
 import { AuthModule } from './auth/auth.module';
 import { ChatModule } from './chat/chat.module';
+import { StripeModule } from './stripe/stripe.module';
 
 @Module({
   imports: [
@@ -30,6 +31,7 @@ import { ChatModule } from './chat/chat.module';
     UsersModule,
     AuthModule,
     ChatModule,
+    StripeModule,
     // AuthModule,
   ],
   controllers: [AppController, HealthController],
