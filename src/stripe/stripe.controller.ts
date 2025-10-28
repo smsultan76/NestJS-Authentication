@@ -7,7 +7,7 @@ export class StripeController {
     constructor(private stripeService: StripeService){}
 
     @Get()
-    allPayment(@Query() page: number, last: number){
+    allPayment(@Query('page') page: number, @Query('last') last: number){
         return this.stripeService.paymentData(page, last);
     }
 

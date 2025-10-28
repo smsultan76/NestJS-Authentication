@@ -23,7 +23,7 @@ export class StripeService {
     }
 
     paymentData(page,last) {
-        return this.paymentRepository.find({ skip: page, take: last ?? 10})
+        return this.paymentRepository.find({ skip: page, take: last ?? 12 })
     }
 
     async paymentCreate(data) {
