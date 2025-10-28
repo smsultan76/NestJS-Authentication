@@ -1,4 +1,18 @@
-import { Controller } from '@nestjs/common';
+import { Body, Controller, Get, Post } from '@nestjs/common';
+import { StripeService } from './stripe.service';
+import { CreatePaypentDto } from './dto/stripe-create.dto';
 
 @Controller('stripe')
-export class StripeController {}
+export class StripeController {
+    constructor(private stripeService: StripeService){}
+
+    @Get()
+    allPayment(){
+        return this.stripeService.paymentData();
+    }
+
+    @Post()
+    createPayment(@Body() data: CreatePaypentDto){
+        return this.stripeService.paymentCreate(data);
+    }
+}
