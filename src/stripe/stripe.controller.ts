@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post, Query } from '@nestjs/common';
 import { StripeService } from './stripe.service';
 import { CreatePaypentDto } from './dto/stripe-create.dto';
 
@@ -17,11 +17,17 @@ export class StripeController {
     }
 
     @Get('payment/success')
-    paymentSuccess(){
-        return "Wow greate work. \n You successfully wasted your money.";
+    async paymentSuccess(@Query('session_id') sessionId: string){
+        const payment = await this.stripeService.UpdatePaymentStatus(
+            sessionId, "completed"
+        );
+        return ["Wow greate work. \n You successfully wasted your money.\n", payment];
     }
     @Get('payment/cancel')
-    paymentCancel(){
-        return "Wow greate work you Canceled. shame on you.!!!";
+    async paymentCancel(@Query('session_id') sessionId: string){
+        const payment = await this.stripeService.UpdatePaymentStatus(
+            sessionId, "failed"
+        );
+        return ["Wow greate work you Canceled. shame on you.!!!", payment ];
     }
 }
