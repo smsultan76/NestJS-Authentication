@@ -32,8 +32,8 @@ export class StripeService {
                 },
             ],
             mode: 'payment',
-            success_url: 'http://localhost:3000/stripe/payment/success',
-            cancel_url: 'http://localhost:3000/stripe/payment/cancel',
+            success_url: `${ this.configService.get('App_Url') }/stripe/payment/success`,
+            cancel_url: `${ this.configService.get('App_Url') }/stripe/payment/cancel`,
             metadata: {
                 name: data.name,
                 email: data.email,

@@ -18,6 +18,10 @@ export class StripeController {
 
     @Get('payment/success')
     paymentSuccess(){
-        return " Wow greate work you successfully wasted your money.";
+        return "Wow greate work. \n You successfully wasted your money.";
+    }
+    @Get('payment/cancel')
+    paymentCancel(){
+        return "Wow greate work you Canceled. shame on you.!!!";
     }
 }
